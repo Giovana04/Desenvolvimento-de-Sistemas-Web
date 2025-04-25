@@ -1,27 +1,30 @@
-import 'reflect-metadata';
-import express, { NextFunction, Request, Response } from "express";
-import cors from "cors"
-import routes from "./routes"
-import AppError from "src/shared/errors/AppError";
-import "src/shared/typeorm";
+import 'reflect-metadata'
+import express, { Request, Response, NextFunction } from 'express';
+import cors from 'cors';
+import 'express-async-errors';
+import routes from './routes';
+import AppError from '../errors/AppError';
+import '../typeorm'
+import {errors} from 'celebrate';
 
-const app = express()
-app.use(cors())
-app.use(express.json())
-app.use(routes)
-app.use((error: Error, request: Request, response: Response, next: NextFunction) : void => {
+const app = express();
+app.use(cors());
+app.use(express.json());
+app.use(routes);
+app.use(errors());
+app.use((error: Error, request: Request, response : Response, next : NextFunction) : void =>{
     if(error instanceof AppError){
-         response.status(error.statusCode).json({
+        response.status(error.statusCode).json({
             status: 'error',
-            messege: error.message
+            message : error.message
         })
     }
-     response.status(500).json({
+    response.status(500).json({
         status: 'error',
-        messege: 'Internal Server Error'
+        message : 'internal server Error'
     })
-})
+});
 
-app.listen(3333, () => {
-    console.log('Server started on port 3333!')
+app.listen(3333, () =>{
+    console.log('Server started on port 3333!');
 })

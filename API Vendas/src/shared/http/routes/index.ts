@@ -1,8 +1,6 @@
-import {Router} from "express"
-import productsRouter from "src/modulos/products/routes/products.routes"
-
-const routes = Router()
-
-routes.use('/products', productsRouter)
+import productsRouter from "@modules/products/routes/products.routes";
+import { Router } from "express";
+const routes = Router();
+routes.use('/products', productsRouter);
 
 export default routes;
