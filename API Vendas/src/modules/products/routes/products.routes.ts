@@ -1,19 +1,20 @@
 import { Router } from "express";
 import ProductsController from "../controllers/ProductsController";
 import { celebrate, Joi, Segments } from 'celebrate';
+import isAuthenticated from "src/shared/http/middlewares/isAuthenticated";
 
 const productsRouter = Router();
 const productsController = new ProductsController();
 
-productsRouter.get('/', async(req, res, next) => {
-    try{
-        await productsController.index(req, res, next);
-    } catch(err){
-        next(err);
+productsRouter.get('/', isAuthenticated, async (req, res, next) => {
+    try {
+        await productsController.index(req, res, next)
+    } catch (err) {
+        next(err)
     }
-});
+})
 
-productsRouter.get('/:id', celebrate({
+productsRouter.get('/:id',isAuthenticated ,celebrate({
     [Segments.PARAMS] : {id: Joi.string().uuid().required()}
   }),
   async (req, res, next) => {
@@ -22,9 +23,9 @@ productsRouter.get('/:id', celebrate({
     } catch (err) {
       next(err);
     }
-  });
+});
   
-  productsRouter.post('/',  celebrate({
+ productsRouter.post('/',isAuthenticated, celebrate({
     [Segments.BODY]: {
         name: Joi.string().required(),
         price: Joi.number().precision(2).min(0).required(),
@@ -41,7 +42,7 @@ productsRouter.get('/:id', celebrate({
   });
   
 
-  productsRouter.put('/:id',  celebrate({
+  productsRouter.put('/:id',isAuthenticated, celebrate({
     [Segments.PARAMS] : {id: Joi.string().uuid().required()},
     [Segments.BODY]: {
         name: Joi.string().required(),
@@ -56,7 +57,7 @@ productsRouter.get('/:id', celebrate({
     }
   });
   
-  productsRouter.delete('/:id', celebrate({
+  productsRouter.delete('/:id', isAuthenticated, celebrate({
     [Segments.PARAMS] : {id: Joi.string().uuid().required()}
   }), async (req, res, next) => {
     try {
