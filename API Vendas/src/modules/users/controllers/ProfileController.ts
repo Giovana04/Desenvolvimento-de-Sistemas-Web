@@ -4,7 +4,7 @@ import UpdateProfileService from "../services/UpdateProfileService";
 
 
 export default class ProfileController{
-    public async Show(request: Request, response: Response, next: NextFunction): Promise<Response | void>{
+    public async show(request: Request, response: Response, next: NextFunction): Promise<Response | void>{
         try{
             const showProfile = new ShowProfileService();
             const user_id = request.user.id;
@@ -15,7 +15,7 @@ export default class ProfileController{
         }
     }
 
-    public async create(request: Request, response: Response, next: NextFunction): Promise<Response | void>{
+    public async update(request: Request, response: Response, next: NextFunction): Promise<Response | void>{
         try{
             const updateProfile = new UpdateProfileService();
             const user_id = request.user.id;

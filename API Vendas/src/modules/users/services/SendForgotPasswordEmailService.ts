@@ -4,7 +4,6 @@ import UserTokensRepository from "@modules/users/typeorm/repositories/UserTokens
 import AppError from "src/shared/errors/AppError";
 import EtherealMail from "@config/mail/EtherealMail";
 import path from 'path'
-import { link } from "joi";
 
 interface IRequest{
     email: string;
