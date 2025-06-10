@@ -1,0 +1,24 @@
+npm i -g @angular/cli@15
+ng version
+ng new
+^pra criar uma nova aplicação
+
+ng s
+ ou 
+ng serve
+
+ng g
+ou
+ng generate
+
+ng generate component view/home
+ng generate component view/user-login
+^n precisa interromper a execução pra rodar, só abrir outro termina
+
+ng generate class model/User --skip-tests
+ng generate class model/Product --skip-tests
+ng generate class model/Customer --skip-tests
+ng generate class model/Order --skip-tests
+
+ng generate service services/auth --skip-tests
+ng generate service services/user --skip-tests
