@@ -4,7 +4,7 @@
     "port": "5432",
     "username": "postgres",
     "password": "DOCKER",
-    "database": "apiPerHab",
+    "database": "api-PerHab",
     "entities": ["./src/modules/**/typeorm/entities/*.ts"],
     "migrations": ["./src/shared/typeorm/migrations/*.ts"],
     "cli": {
