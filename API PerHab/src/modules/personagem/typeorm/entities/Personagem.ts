@@ -1,7 +1,9 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity('products')
-export default class Product {
+import Habilidade from "@modules/habilidade/typeorm/entities/Habilidade";
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+
+@Entity('personagem')
+export default class Personagem {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 

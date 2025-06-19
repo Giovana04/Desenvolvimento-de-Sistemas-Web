@@ -1,28 +1,33 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
+import Personagem from "@modules/personagem/typeorm/entities/Personagem";
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from "typeorm";
 
-@Entity('products')
-export default class Product {
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
 
-    @Column()
-    nome: string;
+@Entity("habilidade")
+export default class Habilidade {
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
-    @Column()
-    descricao: string;
+  @Column()
+  nome: string;
 
-    @Column()
-    tipo: string;
+  @Column()
+  descricao: string;
 
-    @Column()
-    custo: string;
+  @Column()
+  tipo: string;
 
-    @Column()
-    tempo: string;
+  @Column()
+  energia_custo: string;
 
-    @CreateDateColumn()
-    created_at: Date;
+  @Column()
+  tempo_exe: string;
 
-    @CreateDateColumn()
-    updated_at: Date;
+  @Column()
+  personagem_id: string;
+
+  @CreateDateColumn()
+  created_at: Date;
+
+  @CreateDateColumn()
+  updated_at: Date;
 }
