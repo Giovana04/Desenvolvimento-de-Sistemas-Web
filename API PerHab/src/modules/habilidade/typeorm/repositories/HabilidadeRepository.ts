@@ -33,4 +33,12 @@ export default class HabilidadeRepository extends Repository<Habilidade> {
     return existshabilidade;
   }
 
+  findByPersonagemId(personagemId: string) {
+    return this.find({ where: { personagem: { id: personagemId } }, relations: ['personagem'] });
+  }
+
+  findHabilidadeWithPersonagem(id: string) {
+    return this.findOne({ where: { id }, relations: ['personagem'] });
+  }
+
 }

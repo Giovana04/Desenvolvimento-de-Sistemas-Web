@@ -1,6 +1,6 @@
-import {MigrationInterface, QueryRunner, Table} from "typeorm";
+import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateHabilidade1750354307743 implements MigrationInterface {
+export class CreateHabilidade1750463376633 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(new Table({
@@ -42,6 +42,22 @@ export class CreateHabilidade1750354307743 implements MigrationInterface {
                     name: "updated_at",
                     type: "timestamp",
                     default: "now()"
+                },
+                {
+                    name: 'personagem_id', // Esta é a coluna da chave estrangeira
+                    type: 'uuid',
+                    isNullable: true, // Defina como 'false' se uma Habilidade SEMPRE DEVE ter um Personagem
+                },
+            ],
+            foreignKeys: [
+                {
+                    name: 'personagem_id',
+                    referencedTableName: 'personagem',
+                    referencedColumnNames: ['id'],
+                    columnNames: ['personagem_id'],
+                    onDelete: 'CASCADE',
+                    onUpdate: 'CASCADE'
+
                 }
             ]
         }));

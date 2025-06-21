@@ -4,12 +4,12 @@ import Habilidade from "../typeorm/entities/Habilidade";
 import HabilidadeRepository from "../typeorm/repositories/HabilidadeRepository";
 
 interface IRequest {
-    nome: string;
-    descricao: string;
-    tipo: string;
-    energia_custo: string;
-    tempo_exe: string;
-    personagem_id: string;
+  nome: string;
+  descricao: string;
+  tipo: string;
+  energia_custo: string;
+  tempo_exe: string;
+  personagem_id: string;
 }
 
 export default class CreateHabilidadeService {

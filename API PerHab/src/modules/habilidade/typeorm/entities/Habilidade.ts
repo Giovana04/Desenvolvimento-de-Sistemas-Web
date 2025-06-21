@@ -1,4 +1,6 @@
-import Personagem from "@modules/personagem/typeorm/entities/Personagem";
+// Example alternative if the folder is named 'personagens' or in a different location:
+//import Personagem from "../../personagens/typeorm/entities/Personagem";
+import Personagem from "../../../personagem/typeorm/entities/Personagem";
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from "typeorm";
 
 
@@ -22,8 +24,13 @@ export default class Habilidade {
   @Column()
   tempo_exe: string;
 
-  @Column()
-  personagem_id: string;
+  // Uma Habilidade pertence a 1 Personagem
+  @ManyToOne(() => Personagem, personagem => personagem.habilidades)
+  @JoinColumn({ name: 'personagem_id' }) // Isso cria a coluna 'personagem_id' na tabela 'habilidades'
+  personagem!: Personagem; // O objeto Personagem ao qual esta habilidade pertence
+
+  @Column({ type: 'uuid' }) // Campo para armazenar o ID do personagem
+  personagem_id!: string;
 
   @CreateDateColumn()
   created_at: Date;

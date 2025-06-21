@@ -1,5 +1,4 @@
-
-import Habilidade from "@modules/habilidade/typeorm/entities/Habilidade";
+import Habilidade from "../../../habilidade/typeorm/entities/Habilidade";
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('personagem')
@@ -21,6 +20,9 @@ export default class Personagem {
 
     @Column()
     vies: string;
+
+    @OneToMany(() => Habilidade, habilidades => habilidades.personagem_id)
+    habilidades!: Habilidade[];
 
     @CreateDateColumn()
     created_at: Date;
