@@ -25,7 +25,7 @@ export default class Habilidade {
   tempo_exe: string;
 
   // Uma Habilidade pertence a 1 Personagem
-  @ManyToOne(() => Personagem, personagem => personagem.habilidades)
+  @ManyToOne(() => Personagem, personagem => personagem.habilidade)
   @JoinColumn({ name: 'personagem_id' }) // Isso cria a coluna 'personagem_id' na tabela 'habilidades'
   personagem!: Personagem; // O objeto Personagem ao qual esta habilidade pertence
 

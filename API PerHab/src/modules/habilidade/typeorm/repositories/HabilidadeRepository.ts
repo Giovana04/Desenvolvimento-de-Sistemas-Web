@@ -14,12 +14,15 @@ export default class HabilidadeRepository extends Repository<Habilidade> {
   }
 
   public async findByType(tipo: string): Promise<Habilidade[]> {
-    const habilidades = await this.find({
-      where: { tipo },
-    });
+  const habilidade = await this.find({
+    where: { tipo },
+  });
 
-    return habilidades;
-  }
+  console.log("busca tipo:", habilidade);
+
+  return habilidade;
+}
+
 
   public async findAllByIds(habilidade: IFindHabilidade[]): Promise<Habilidade[]> {
     console.log("habilidade - repo", habilidade);

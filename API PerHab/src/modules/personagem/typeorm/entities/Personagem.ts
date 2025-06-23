@@ -21,8 +21,9 @@ export default class Personagem {
     @Column()
     vies: string;
 
-    @OneToMany(() => Habilidade, habilidades => habilidades.personagem_id)
-    habilidades!: Habilidade[];
+    @OneToMany(() => Habilidade, habilidade => habilidade.personagem)
+    habilidade!: Habilidade[];
+
 
     @CreateDateColumn()
     created_at: Date;

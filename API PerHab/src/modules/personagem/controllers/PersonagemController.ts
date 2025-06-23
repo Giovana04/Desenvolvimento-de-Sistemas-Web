@@ -9,8 +9,8 @@ export default class PersonagemsController{
     
     public async index(request : Request, response : Response, next: NextFunction) : Promise<Response | void>{
       try{
-            const listpersonagems = new ListPersonagemService();
-            const personagems = await listpersonagems.execute();
+            const listpersonagem = new ListPersonagemService();
+            const personagems = await listpersonagem.execute();
             return response.json(personagems);
       }  catch(err){
             next(err);
