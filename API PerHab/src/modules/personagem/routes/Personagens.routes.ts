@@ -47,7 +47,7 @@ personagensRouter.put('/:id', isAuthenticated, celebrate({
         nome: Joi.string().required(),
         anime: Joi.string().required(),
         arma: Joi.string().allow(null).optional(),
-        vies: Joi.string().optional(),
+        vies: Joi.string().allow(null).optional(),
         img: Joi.string().allow(null).optional(),
 
     }

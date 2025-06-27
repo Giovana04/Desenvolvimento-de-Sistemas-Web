@@ -13,9 +13,7 @@ export default class personagemRepository extends Repository<Personagem> {
   }
 
   public async findAllByIds(personagem: IFindPersonagens[]): Promise<Personagem[]> {
-    console.log("personagem - repo", personagem);
     const personagensIds = personagem.map(personagem => personagem.id);
-    console.log("personagem - repo", personagensIds);
     const existspersonagem = await this.find({
       where: {
         id: In(personagensIds),

@@ -11,7 +11,7 @@ export default class DeletePersonagemService{
         const personagemRepository = getCustomRepository(PersonagemRepository);
         const personagem = await personagemRepository.findOne(id);
         if(!personagem){
-            throw new AppError('personagem Not Found');
+            throw new AppError('personagem não encontrado');
         }
         await personagemRepository.remove(personagem);
     }

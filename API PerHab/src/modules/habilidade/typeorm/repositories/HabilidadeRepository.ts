@@ -25,9 +25,7 @@ export default class HabilidadeRepository extends Repository<Habilidade> {
 
 
   public async findAllByIds(habilidade: IFindHabilidade[]): Promise<Habilidade[]> {
-    console.log("habilidade - repo", habilidade);
     const habilidadeIds = habilidade.map(habilidade => habilidade.id);
-    console.log("habilidade - repo", habilidadeIds);
     const existshabilidade = await this.find({
       where: {
         id: In(habilidadeIds),
