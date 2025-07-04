@@ -31,7 +31,7 @@ export default class UpdateProfileService{
         if(password && old_password){
             const checkOldPassword = await compare(old_password, user.password)
             if(!checkOldPassword){
-                throw new AppError('não lembro')
+                throw new AppError('Old password does not match')
             }
             const hashedpassword = await hash(password, 8);
         }

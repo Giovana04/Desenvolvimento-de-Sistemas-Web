@@ -10,8 +10,9 @@ interface IRequest{
     password: string;
 }
 
-export default class SendForgotPasswordEmailServise{
+export default class ResetPasswordServise{
     public async execute({token, password} : IRequest) : Promise<void>{
+        console.log("TOKEN RECEBIDO:", token);
         const userRepository = getCustomRepository(UserRepository);
         const userTokenRepository = getCustomRepository(UserTokensRepository);
         const userToken = await userTokenRepository.findByToken(token);

@@ -18,7 +18,7 @@ export default class UpdatePersonagemService{
             throw new AppError('personagem não encontrado');
         }
         const personagemExists = await personagemsRepository.findByNameAnime(nome, anime);
-        if(personagemExists && nome != personagemExists.nome && anime != personagemExists.anime){
+        if(personagemExists && nome == personagemExists.nome && anime == personagemExists.anime){
             throw new AppError('Já existe um personagem com esse nome e anime');
         }
         personagem.nome = nome;

@@ -19,16 +19,15 @@ export default class SendForgotPasswordEmailService{
             throw new AppError('User does not exist.');
         }
         const {token} = await userTokenRepository.createToken(user.id);
-        //implementação do envio do token
-        console.log(user.id);
+        console.log("TOKEN GERADO:", token);
         await EtherealMail.sendMail({
             to: {name: user.name, email:user.email},
-            subject: '[API VENDAS] Recuperação de Senha',
+            subject: '[API PER-HAB] Recuperação de Senha',
             templateData: {
                 file: forgotPasswordTemplate,
                 variables: {
                     name: user.name,
-                    link: `http://localhost:3000/reset_password?token=${token}`
+                    link: `http://localhost:3333/reset_password?token=${token}`
                 }
             }
         });

@@ -1,10 +1,11 @@
 import { Router } from "express";
 import { celebrate, Joi, Segments } from "celebrate";
 import ForgotPasswordController from "../controllers/ForgotPasswordController";
+import ResetPasswordController from "../controllers/ResetPasswordController";
 
 const passwordRoutes = Router();
 const forgotPasswordController = new ForgotPasswordController();
-const resetPasswordController = new ForgotPasswordController();
+const resetPasswordController = new ResetPasswordController();
 
 passwordRoutes.post("/forgot", celebrate({
     [Segments.BODY]: {

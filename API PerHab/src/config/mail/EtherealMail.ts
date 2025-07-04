@@ -28,16 +28,16 @@ export default class EtherealMail{
                 user: account.user,
                 pass: account.pass,
             },
-             secure: account.smtp.secure, // importante! usar o valor correto
+             secure: account.smtp.secure,
     
             tls: {
-            rejectUnauthorized: false //
+            rejectUnauthorized: false 
             }
         });
         const message = await transporter.sendMail({
             from: {
-                name: from?.name || 'Equipe API Vendas',
-                address: from?.email || 'equipe_vendas@apivendas.com.br' 
+                name: from?.name || 'Equipe API Per-Hab',
+                address: from?.email || 'perHab@apiPerHab.com.br' 
             },
             to: {
                 name: to.name,

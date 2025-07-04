@@ -11,10 +11,14 @@ interface IRequest{
 export default class ShowPersonagemService{
     public async execute({id} : IRequest) : Promise<Personagem>{
         const personagemRepository = getCustomRepository(PersonagemRepository);
-        const personagem = await personagemRepository.findOne(id);
-        if(!personagem){
-            throw new AppError('Personagem não encontrado');
-        }
-        return personagem;
+    const personagem = await personagemRepository.findOne({
+        relations: ["habilidade"],
+        where: { id }
+    });
+    if(!personagem){
+        throw new AppError('Personagem não encontrado');
+    }
+    
+    return personagem;
     }
 }

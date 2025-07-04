@@ -24,9 +24,10 @@ app.use((error: Error, request: Request, response : Response, next : NextFunctio
     console.log(error)
     if(error instanceof AppError){
         response.status(error.statusCode).json({
-            status: 'error',
-            message : error.message
-        })
+      status: 'error',
+      message: error.message,
+    });
+        return;
     }
     response.status(500).json({
         status: 'error',
